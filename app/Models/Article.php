@@ -22,6 +22,18 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function scopeAllPaginate($query, $numbers) {
+        return $query->with('tags', 'state')->orderBy('id')->paginate($numbers);
+    }
+
+    public function scopeFindBySlug($query, $slug) {
+        return $query->with('comments', 'tags', 'state')->where('slug', $slug)->firstOrFail();
+    }
+
+    public function scopeFindByTag($query) {
+        return $query->with('tags')->orderBy('created_at', 'desc')->paginate(10);
+    }
+
 }
 
 
