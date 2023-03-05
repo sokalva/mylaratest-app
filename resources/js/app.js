@@ -1,39 +1,31 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
 import './bootstrap';
 import { createApp } from 'vue';
 
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
+import  store  from './store';
 
-const app = createApp({});
+
+const app = createApp({
+    created() {
+        let url = window.location.pathname;
+        let slug = url.substring(url.lastIndexOf('/') + 1);
+        console.log(url);
+        console.log(slug);
+        this.$store.commit('SET_SLUG', slug);
+        this.$store.dispatch('getArticleData', slug);
+        this.$store.dispatch('viewsIncrement', slug);
+    }
+});
+app.use(store);
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import ArticleComponent from "./components/ArticleComponent.vue";
+import ViewsComponent from "./components/ViewsComponent.vue";
+import LikesComponent from "./components/LikesComponent.vue";
+
 app.component('example-component', ExampleComponent);
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
-//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
-// });
-
-/**
- * Finally, we will attach the application instance to a HTML element with
- * an "id" attribute of "app". This element is included with the "auth"
- * scaffolding. Otherwise, you will need to add an element yourself.
- */
+app.component('article-component', ArticleComponent);
+app.component('views-component', ViewsComponent);
+app.component('likes-component', LikesComponent);
 
 app.mount('#app');

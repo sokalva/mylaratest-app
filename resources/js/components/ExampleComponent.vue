@@ -7,6 +7,7 @@
 
                     <div class="card-body">
                         I'm an example component.
+                        Привет, example component!
                     </div>
                 </div>
             </div>
@@ -21,3 +22,9 @@
         }
     }
 </script>
+
+<style scoped>
+.card-body {
+    /*background-color: #2196f3;*/
+}
+</style>

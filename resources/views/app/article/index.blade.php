@@ -17,9 +17,8 @@
                         <p>Дата создания: {{$article->created_at}}</p>
                         <a href="{{route('article.show', $article->slug)}}" class="btn btn-primary">Подробнее</a>
                         <div class="mt-3">
-                            <span class="badge bg-primary">{{$article->state->likes}} <i
-                                    class="far fa-thumbs-up"></i></span>
                             <span class="badge bg-danger">{{$article->state->views}} <i class="far fa-eye"></i></span>
+                            <span class="badge bg-primary">{{$article->state->likes}} <i class="far fa-thumbs-up"></i></span>
                         </div>
                         <div class="mt-4">
                             Теги:
