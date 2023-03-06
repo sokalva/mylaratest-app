@@ -22,10 +22,12 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import ArticleComponent from "./components/ArticleComponent.vue";
 import ViewsComponent from "./components/ViewsComponent.vue";
 import LikesComponent from "./components/LikesComponent.vue";
+import CommentsComponent from "./components/CommentsComponent.vue";
 
 app.component('example-component', ExampleComponent);
 app.component('article-component', ArticleComponent);
 app.component('views-component', ViewsComponent);
 app.component('likes-component', LikesComponent);
+app.component('comments-component', CommentsComponent);
 
 app.mount('#app');

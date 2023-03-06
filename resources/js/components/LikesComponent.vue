@@ -31,6 +31,6 @@ export default {
 
 .likesButton {
     cursor: pointer;
+    margin-left: 4px !important;
 }
-
 </style>
